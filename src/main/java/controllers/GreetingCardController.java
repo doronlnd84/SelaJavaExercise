@@ -19,6 +19,9 @@ public class GreetingCardController {
 	@Autowired
 	List<Template> cardStorage;
 	
+//‎2. Performing post operation on specific template will create a greeting card. ‎
+//	‎    The user should send the missing blanks in the template as arguments.‎
+
 	@PostMapping({"/greetingCard/create/newyear"})
 	public List<String> validateNewyearBlanks(@RequestParam Map<String,String> allParams)  {
 			return getBlankfields(NewYearTemplate.class, allParams);
@@ -30,6 +33,7 @@ public class GreetingCardController {
 
 	}
 	
+//3. The user can add new greeting card to the templates with put command
 	@PutMapping("/greetingCard/create/newyear")
 	public void InsertTeplateNewCard(@RequestParam Map<String,String> allParams) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException  {
 		Template template = new NewYearTemplate();
